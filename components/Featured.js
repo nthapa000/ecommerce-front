@@ -1,23 +1,21 @@
+import Link from "next/link";
 import Center from "./Center";
 
-export default function Featured() {
+export default function Featured({product}) {
   return (
     <div className="FeaturedDiv">
       <Center>
         <div className="FeaturedWrapper">
           <div className="FeaturedWrapperDiv">
             <div>
-              <h1 className="FeaturedTitle">Pro Anywhere</h1>
+              <h1 className="FeaturedTitle">{product.title}</h1>
               <p className="FeaturedDisc">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam
-                vitae dui nisi. Fusce suscipit purus sed mauris consectetur, ac
-                posuere turpis facilisis. Vestibulum molestie dui nec est
-                volutpat, vitae venenatis.
+                {product.description}
               </p>
               <div className="FeaturedButtonWrapper pt-2">
-                <button className="primaryBtn  ButtonWhite ButtonWhiteOutline">
+                <Link href={'/products/'+product._id} className="primaryBtn  ButtonWhite ButtonWhiteOutline">
                   Read More
-                </button>
+                </Link>
                 <button className="primaryBtn FeaturedButtonPrimary">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -35,8 +33,8 @@ export default function Featured() {
           <div className="FeaturedWrapperDiv">
             {/* Here will be image */}
             <img
-              className="FeaturedImg"
-              src="https://ecommerce-1-prototype.s3.amazonaws.com/1720810262701.jpeg"
+              className="FeaturedImg rounded-md"
+              src={product.images[0]}
             ></img>
           </div>
         </div>
